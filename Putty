@@ -1,0 +1,43 @@
+Commands for my Ref:
+
+$putty.exe -ssh user@host port
+$start putty.exe -pw password -ssh user@host
+
+
+PSCP:
+1) copy files from windows to linux using PPK
+C:\> pscp -i C:\Keys\my-key-pair.ppk C:\Sample_file.txt user_name@public_dns:/usr/local/Sample_file.txt
+
+
+
+PUTTYGEN:
+Generating PPK from commandline
+
+PuTTYgen unidentified build, Aug  7 2013 12:24:58
+Usage: puttygen ( keyfile | -t type [ -b bits ] )
+                [ -C comment ] [ -P ] [ -q ]
+                [ -o output-keyfile ] [ -O type | -l | -L | -p ]
+  -t    specify key type when generating (rsa, dsa, rsa1)
+  -b    specify number of bits when generating key
+  -C    change or specify key comment
+  -P    change key passphrase
+  -q    quiet: do not display progress bar
+  -O    specify output type:
+           private             output PuTTY private key format
+           private-openssh     export OpenSSH private key
+           private-sshcom      export ssh.com private key
+           public              standard / ssh.com public key
+           public-openssh      OpenSSH public key
+           fingerprint         output the key fingerprint
+  -o    specify output file
+  -l    equivalent to `-O fingerprint'
+  -L    equivalent to `-O public-openssh'
+  -p    equivalent to `-O public'
+  
+$ puttygen keyfile.pem -O private -o avdev.ppk
+For the public key:
+$ puttygen keyfile.pem -L
+Outputting a private key from a PuTTY formated keyfile:
+$ puttygen keyfile.pem -O private-openssh -o avdev.pvk
+For the public key:
+$ puttygen keyfile.pem -L
